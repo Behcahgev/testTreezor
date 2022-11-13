@@ -1,0 +1,47 @@
+<div style="margin: 2%; border: solid;">
+{% set messages = [] %}
+{% for child in form.children %}
+    {% for error in child.vars.errors %}
+        {% set messages = messages|merge([error.message]) %}
+    {% endfor %}
+{% endfor %}
+{% if messages|length %}
+    <ul>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+    <div class="row">
+        <div class="col-6" style="text-align:center">
+            {{ form_label(form.last_name) }} <br>
+            {{ form_widget(form.last_name) }}
+        </div>
+        <div class="col-6" style="text-align:center">
+            {{ form_label(form.first_name) }} <br>
+            {{ form_widget(form.first_name) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6" style="text-align:center">
+            {{ form_label(form.email) }} <br>
+            {{ form_widget(form.email) }}
+        </div>
+        <div class="col-6" style="text-align:center">
+            {{ form_label(form.birthday_date) }} <br>
+            {{ form_widget(form.birthday_date) }}
+        </div>
+    </div>
+    <div class="row">
+        {{ form_rest(form) }}
+    </div>
+
+    <button style="margin: 2%" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+</div>
+

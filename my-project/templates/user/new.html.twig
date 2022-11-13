@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Créer un nouvel utilisateur</h1>
+
+    {{ include('user/_form.html.twig') }}
+
+    <a href="{{ path('app_user_index') }}" class="btn btn-secondary" > <i class="bi bi-backspace"></i> Retour à la liste des utilisateurs</a>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            clearBtn: true
+        });
+        $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] ); // texte en french
+    });
+</script>
+{% endblock %}

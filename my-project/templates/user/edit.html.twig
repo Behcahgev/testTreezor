@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer un utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Editer un utilisateur</h1>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a href="{{ path('app_user_index') }}" class="btn btn-secondary" > <i class="bi bi-backspace"></i> back to list</a>
+
+    {{ include('user/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $(document).ready(function() {
+        // you may need to change this code if you are not using Bootstrap Datepicker
+        $('.js-datepicker').datepicker({
+            format: 'dd/mm/yyyy',
+            clearBtn: true
+        });
+        $.datepicker.setDefaults( $.datepicker.regional[ "fr" ] ); // texte en french
+    });
+</script>
+{% endblock %}
